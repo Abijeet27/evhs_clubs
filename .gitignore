@@ -10,6 +10,7 @@
 *.userosscache
 *.sln.docstates
 *.env
+x.txt
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -416,3 +417,9 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+build/
+flutter-plugins-dependencies
+flutter_application_1.iml
+.dart_tool
+.DS_Store
