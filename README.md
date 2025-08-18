@@ -5,7 +5,7 @@ The app also empowers club admins to create and manage clubs, events, and studen
 
 ---
 
-## ✨ Features
+## Features
 
 ### For Students
 - Browse available clubs at EVHS  
@@ -20,14 +20,14 @@ The app also empowers club admins to create and manage clubs, events, and studen
 
 ---
 
-## 📱 Platform
+## Platform
 
 - Initial release: **iOS (iPhone only)**  
 - Future support: Android and Web (planned)
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - macOS with [Xcode](https://developer.apple.com/xcode/) installed  
@@ -51,20 +51,20 @@ The app also empowers club admins to create and manage clubs, events, and studen
 
 ---
 
-## 🖼️ Screenshots
+## Screenshots
 
 > _(Add screenshots here once available)_  
 
 ---
 
-## 👥 Users
+## Users
 
 - **Students** – Discover, register, and engage with school clubs  
 - **Admins** – Create and manage clubs and events  
 
 ---
 
-## 🔮 Roadmap
+## Roadmap
 
 - [ ] Android release  
 - [ ] Web dashboard for admins  
@@ -73,18 +73,18 @@ The app also empowers club admins to create and manage clubs, events, and studen
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](LICENSE).  
 
 ---
 
-## 📧 Contact
+## Contact
 
 For questions or feedback, please reach out to the EVHS Clubs development team.  
