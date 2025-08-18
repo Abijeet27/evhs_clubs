@@ -24,13 +24,6 @@ The app also empowers club admins to create and manage clubs, events, and studen
 - [ ] Android release  
 - [ ] Push notifications for events  
 
----
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request.
----
-
 ## Contact
 
-For questions or feedback, please reach out to the EVHS Clubs development team.  
+For questions or feedback, please reach out to the EVHS Clubs development team (email to be added later)
