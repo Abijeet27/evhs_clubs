@@ -1,4 +1,4 @@
-import 'package:evhs_clubs/main.dart';
+import 'main.dart';
 import 'package:firebase_auth/firebase_auth.dart' as Auth;
 import 'my_app_state.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +28,7 @@ class _UnregistredState extends State<Unregistred> {
   var link1;
   var link2;
   var link3;
+  var link4;
   List<Widget> tileList = [];
   List<Widget> newList = [];
   
@@ -56,6 +57,7 @@ class _UnregistredState extends State<Unregistred> {
         var link1_ = "";
         var link2_ = "";
         var link3_ = "";
+        var link4_ = "";
         newList.add(
           ElevatedButton(
             child: Text("Add New Club"),
@@ -112,7 +114,7 @@ class _UnregistredState extends State<Unregistred> {
                         ),
                         TextField(
                           decoration: InputDecoration(
-                            hintText: "Club Secrertary",
+                            hintText: "Club Secretary",
                           ),
                           onChanged: (value) {
                             secretary = value;
@@ -120,7 +122,7 @@ class _UnregistredState extends State<Unregistred> {
                         ),
                         TextField(
                           decoration: InputDecoration(
-                            hintText: "Secrertary Email",
+                            hintText: "Secretary Email",
                           ),
                           onChanged: (value) {
                             Esecretary = value;
@@ -183,6 +185,7 @@ class _UnregistredState extends State<Unregistred> {
                             master_database[refLength]["link1"] = link1_;
                             master_database[refLength]["link2"] = link2_;
                             master_database[refLength]["link3"] = link3_;
+                            master_database[refLength]["link4"] = link4_;
                             Navigator.of(context).pop();
                             first_loading_page_5= true;
                             setState(() {tileList = newList;});
@@ -226,13 +229,30 @@ class _UnregistredState extends State<Unregistred> {
           print("3");
           link3 = "";
         }
-       
+        if (club["link4"] != null) {
+          link4 = club["link4"];
+        } else {
+          print("4");
+          link4 = "";
+        }
         var email2 = myApp.user?.email.toString().split("@")[0];
-        if (!club["registry"].keys.contains(email2)) {
-          if (myApp.user?.email == club["Pres Email"] ||
+        if (!club["registry"].keys.contains(email2) & 
+              !(myApp.user?.email == club["Pres Email"] ||
               myApp.user?.email == club["VP Email"] ||
               myApp.user?.email == club["Sec Email"] ||
-              myApp.user?.email == club["Treas Email"]) {
+              myApp.user?.email == club["Treas Email"]||
+              myApp.user?.email == club["Advisor Email"] ||
+              myApp.user?.email == club["Public Relations Email"] ||
+              myApp.user?.email == club["Marketing Director Email"] ||
+              myApp.user?.email == club["Events Coordinator Email"] ||
+              myApp.user?.email == club["Public Relations 2 Email"] ||
+              myApp.user?.email == club["Marketing Director 2 Email"] ||
+              myApp.user?.email == club["Events Coordinator 2 Email"]||
+              myApp.user?.email == club["President 2 Email"]||
+              myApp.user?.email == club["Vice President 2 Email"]|| 
+              myApp.user?.email == club["Treasurer 2 Email"]||
+              myApp.user?.email == club["Secretary 2 Email"]||
+              myApp.user?.email == club["Advisor 2 Email"])) {
             newList.add(
               SizedBox(
                 height: 230,
@@ -253,122 +273,23 @@ class _UnregistredState extends State<Unregistred> {
                           children: [
                             Text(
                               textAlign: TextAlign.center,
-                              club["President"],
+                              "President: ${club["President"]}",
                             ),
                             Text(
                               textAlign: TextAlign.center,
-                              club["Vice President"],
+                              "Vice President: ${club["Vice President"]}",
                             ),
                             Text(
                               textAlign: TextAlign.center,
-                              club["Treasurer"],
+                              "Treasurer: ${club["Treasurer"]}",
                             ),
                             Text(
                               textAlign: TextAlign.center,
-                              club["Secretary"],
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        ElevatedButton(
-                          onPressed: () async {
-                            showDialog<void>(
-                              context: page5context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  content: Column(
-                                    children: [
-                                      TextFormField(
-                                        initialValue: link1,
-                                        decoration: InputDecoration(
-                                          helperText:
-                                              "Social Media Link 1 (eg. Discord, Instagram, Facebook)",
-                                        ),
-                                        onChanged: (input) async {
-                                          link1 = input;
-                                        },
-                                      ),
-                                      TextFormField(
-                                        initialValue: link2,
-                                        decoration: InputDecoration(
-                                          helperText:
-                                              "Social Media Link 2 (eg. Discord, Instagram, Facebook)",
-                                        ),
-                                        onChanged: (input) async {
-                                          link2 = input;
-                                        },
-                                      ),
-                                      TextFormField(
-                                        initialValue: link3,
-                                        decoration: InputDecoration(
-                                          helperText:
-                                              "Social Media Link 3 (eg. Discord, Instagram, Facebook)",
-                                        ),
-                                        onChanged: (input) async {
-                                          link3 = input;
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                  actions: [
-                                    ElevatedButton(
-                                      onPressed: () async {
-                                        master_database[num.toString()]["link1"] = link1;
-                                        master_database[num.toString()]["link2"] = link2;
-                                        master_database[num.toString()]["link3"] = link3;
-                                        Navigator.of(context).pop();
-                                        first_loading_page_5= true;
-                                        setState(() {tileList = newList;});
-                                      },
-                                      child: Text("Save and Close"),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          },
-                          child: Icon(Icons.settings),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            );
-          } else {
-            newList.add(
-              SizedBox(
-                height: 230,
-                child: Card(
-                  shape: shape,
-                  color: Color.fromARGB(217, 27, 195, 237),
-                  child: Center(
-                    child: Column(
-                      children: [
-                        SizedBox(height: 10),
-                        Text(
-                          textAlign: TextAlign.center,
-                          club["Club Name"],
-                        ),
-                        SizedBox(height: 10),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              textAlign: TextAlign.center,
-                              club["President"],
+                              "Secretary ${club["Secretary"]}",
                             ),
                             Text(
                               textAlign: TextAlign.center,
-                              club["Vice President"],
-                            ),
-                            Text(
-                              textAlign: TextAlign.center,
-                              club["Treasurer"],
-                            ),
-                            Text(
-                              textAlign: TextAlign.center,
-                              club["Secretary"],
+                              "Advisor(s) ${club["Advisor"]}",
                             ),
                           ],
                         ),
@@ -381,16 +302,28 @@ class _UnregistredState extends State<Unregistred> {
                                 return AlertDialog(
                                   content: ListView(
                                     children: [
-                                      Text(club["link1"]),
-                                      Text(club["link2"]),
-                                      Text(club["link3"]),
+                                      Text(
+                                        "Discord: ${club["link1"]}"
+                                      ),
+                                      Text(
+                                        "Instagram: ${club["link2"]}"
+                                      ),
+                                      Text(
+                                        "Facebook: ${club["link3"]}"
+                                      ),
+                                      Text(
+                                        "Other: ${club["link4"]}"
+                                      ),
+                                      SizedBox(height: 100),
+                                      Text(
+                                        club["Mission Statement"]
+                                      ),
                                     ],
                                   ),
                                   actions: [
                                     ElevatedButton(
                                       onPressed: (){
                                         myApp.register(num);
-                                        player.play(UrlSource("assets/sfx_ding.mp3"));
                                         Navigator.of(context).pop();
                                         first_loading_page_5= true;
                                         setState(() {tileList = newList;});
@@ -417,9 +350,7 @@ class _UnregistredState extends State<Unregistred> {
               ),
             );
           }
-        }
       }
-
       return newList;
     }
 
@@ -454,16 +385,15 @@ class _UnregistredState extends State<Unregistred> {
       tileList = newList;
     }
     page5context = context;
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(title: Text("Unregistered Clubs")),
+    return  Scaffold(
+        backgroundColor: Color.fromARGB(255, 212, 176, 62),
+        appBar: AppBar(title: Text("Unregistered Clubs"), backgroundColor: Color.fromARGB(255, 212, 176, 62)),
         body: RefreshIndicator(
           child: ListView(children: tileList),
           onRefresh: () async {
             wait();
           },
         ),
-      ),
     );
   }
 }

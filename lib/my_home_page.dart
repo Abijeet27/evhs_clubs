@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
-import 'Settings.dart';
-import 'Registered.dart';
-import 'Unregistered.dart';
+import 'settings.dart';
+import 'registered.dart';
+import 'unregistered.dart';
 
 
 class MyHomePage extends StatefulWidget {

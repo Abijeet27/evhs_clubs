@@ -5,7 +5,7 @@ import 'package:firebase_database/firebase_database.dart'
     show DataSnapshot, DatabaseReference, FirebaseDatabase;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'SignUp.dart';
+import 'signup.dart';
 import 'my_app_state.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -14,6 +14,12 @@ import 'firebase_options.dart' show DefaultFirebaseOptions;
 DatabaseReference ref = FirebaseDatabase.instance.ref();
 
 HashMap<dynamic, dynamic> master_database = HashMap();
+void updateFirebase() async {
+  while (true) {
+    await Future.delayed(const Duration(seconds: 5));
+    await ref.set(master_database);
+  }
+}
 void main() async{
   
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,8 +33,9 @@ void main() async{
     print("Data loaded successfully");
     print(master_database.toString());
   }
+  updateFirebase();
   MyAppState().resetUser();
-
+  
   
   String data ="";
   runApp(MyApp());
